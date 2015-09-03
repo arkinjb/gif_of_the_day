@@ -3,7 +3,15 @@
   <head>
     <link rel='stylesheet' type='text/css' href='css/styles.css'>
     <script src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js' type='text/javascript'></script>
-
+    <script src="js/jquery.gif_of_the_day.js" type='text/javascript'></script>
+    
+    <script type='text/javascript'>
+      $(document).ready(function(){
+        $('.gif-container').gifOfTheDay({
+          category: 'cats'
+        });
+      });
+    </script>
   </head>
   <body>
     <h1>Welcome to GIFs-R-Us</h1>
