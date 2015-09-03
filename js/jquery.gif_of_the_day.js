@@ -3,14 +3,21 @@
 // Using an IIFE, see: http://gregfranko.com/blog/jquery-best-practices
 (function(window, document, $) {
 
-  $.fn.gifOfTheDay = function(){
+  $.fn.gifOfTheDay = function(options){
     var self = this;
-    var category = "funny+cat";
-    var apiKey = "dc6zaTOxFJmzC"; // Note: this is the *public beta* key.  Use env var for personal keys.
-    var giphyUrl = "http://api.giphy.com/v1/gifs/search?limit=1&rating=pg&q=" + category + "&api_key=" + apiKey;
-    $.getJSON( giphyUrl).then(function(giphyResults){
-      var imageUrl = parseImageFromGiphy(giphyResults, 0); // we only requested one (limit=1)
-      appendImageTag(self, imageUrl, category);
+
+    // Use options with default options.
+    //   see: http://learn.jquery.com/plugins/basic-plugin-creation/
+    var settings = $.extend({
+        // These are the defaults.
+        category: "funny+cat",
+        apiKey: "dc6zaTOxFJmzC" // Note: this is the *public beta* key.  Pass your personal key.
+    }, options );
+
+    var giphy_url = "http://api.giphy.com/v1/gifs/search?limit=1&rating=pg&q=" + settings.category + "&api_key=" + settings.apiKey;
+    $.getJSON( giphy_url).then(function(giphy_results){
+      var imageUrl = parseImageFromGiphy(giphy_results, 0); // we only requested one (limit=1)
+      appendImageTag(self, imageUrl, settings.category);
     });
 
     return this; // for jQuery chaining
