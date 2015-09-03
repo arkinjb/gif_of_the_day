@@ -14,8 +14,8 @@ Create a new html document and link to jQuery. Add a `<div>` with the class `gif
 
 ## Step 2
 
-When a user adds `$('.gif-of-the-day').gifOfTheDay();` to their javascript,
-the text of the div should be set to "gif here"
+When a user adds `$('.gif-container').gifOfTheDay();` to their javascript,
+the text of the div should be set to "The plugin will put the gif here"
 
 ## Step 3
 
